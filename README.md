@@ -47,7 +47,7 @@ local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisF
 
 task.wait(2)
 
--- Ignite the firework named "Firework1" with type of "Rocket". (Other types: "Crackle", "Confetti" and "Rainbow")
+-- Ignite the firework named "Firework1" with type of "Rocket".
 RodisFireworksModule:Ignite("Rocket","Firework1")
 ```
 
