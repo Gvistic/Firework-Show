@@ -1,7 +1,7 @@
-# RodisFireworks
+# 🎆 Rodis Fireworks
  
-    Welcome to the Rodis Firework Show Developer Event! 
-    You can use this firework module to create your own amazing firework shows! 🎆
+Welcome to the Rodis Firework Show Developer Event!
+You can use this firework module to create your own amazing firework shows! 
 
 
  ## Installation
