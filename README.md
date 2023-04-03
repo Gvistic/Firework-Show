@@ -20,7 +20,7 @@ To use the Rodis Firework module, follow these steps:
 2. Give each type of firework model a unique name (Though you can ignite multiple of the same fireworks if they have the same name).
 3. Use the firework module to ignite the fireworks!
 
-### Firework Module
+## Firework Module
 
 The firework module has three functions:
 1. `:Ignite(fireworkType, name, properties)`
