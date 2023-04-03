@@ -12,6 +12,31 @@
      - "RodisFireworkController" -> `ServerScriptService`
      - "RodisFireworks" -> `Workspace`
 
+## Getting Started
+
+To use the Rodis Firework module, follow these steps:
+
+1. Create or import a rocket or firework launcher, and place them in Workspace, in the "RodisFireworks" folder.
+2. Give each type of firework model a unique name (Though you can ignite multiple of the same fireworks if they have the same name).
+3. Use the firework module to ignite the fireworks!
+
+### Firework Module
+
+The firework module has three functions:
+    1. :Ignite(fireworkType, name, properties)
+        This function ignites a rocket given the type, name, and optional properties.
+            - fireworkType: The type of firework to ignite. This can be either "Rocket", "Crackle", "Confetti" or "Rainbow"
+            - name: The name of the firework(s) you want to ignite.
+            - properties (Optional): A table containing any additional properties for the rocket or firework.
+
+    2. :IgniteClassic(fireworkType, name)
+        This function fires the classical fireworks originally created by Stickmasterluke
+            - fireworkType: The type of firework to ignite. This can be either "Fan", "Display", "Classic" or "Finale"
+            - name: The name of the firework(s) you want to ignite.
+
+    3. :GetRocketFactory()
+        If you're a bit more familiar with object-oriented programming, this function returns the Rocket object,
+        so you have a bit more control features.
 
 ## Example (Non-Object):
 
