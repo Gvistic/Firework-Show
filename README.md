@@ -1,6 +1,7 @@
 # RodisFireworks
  
- Show off your amazing fireworks shows easily with this plugin! 
+    Welcome to the Rodis Firework Show Developer Event! 
+    You can use this firework module to create your own amazing firework shows! 🎆
 
 
  ## Installation
