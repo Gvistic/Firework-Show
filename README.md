@@ -24,10 +24,10 @@ To use the Rodis Firework module, follow these steps:
 
 The firework module has three functions:
 1. `:Ignite(fireworkType, name, properties)`
-- This function ignites a rocket given the type, name, and optional properties.
-    - fireworkType: The type of firework to ignite. This can be either "Rocket", "Crackle", "Confetti" or "Rainbow"
-    - name: The name of the firework(s) you want to ignite.
-    - properties (Optional): A table containing any additional properties for the rocket or firework.
+    - This function ignites a rocket given the type, name, and optional properties.
+        - fireworkType: The type of firework to ignite. This can be either "Rocket", "Crackle", "Confetti" or "Rainbow"
+        - name: The name of the firework(s) you want to ignite.
+        - properties (Optional): A table containing any additional properties for the rocket or firework.
 
 2. `:IgniteClassic(fireworkType, name)`
 - This function fires the classical fireworks originally created by Stickmasterluke
