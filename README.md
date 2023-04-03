@@ -95,6 +95,8 @@ end)
 
 ## Properties:
 
+These are the properties that you can set. You can also view the default properties for Rocket: (Here)[https://github.com/Gvistic/Rodis-Fireworks/blob/main/src/shared/RodisFireworksModule/Modules/Fireworks/Rocket/Properties.lua]
+
 | Property  | Type | Description | Example (Rocket Default) |
 | :---: | :---: | ------------- | ------------- |
 | AttachmentAlwaysFacesUp  | `boolean` | The attachment will face straight up to the sky, if you want to angle your fireworks at a different angle set this to false | `AttachmentAlwaysFacesUp = true;` |
@@ -123,19 +125,16 @@ Example:
 ```lua
 LaunchSequence = {
     [1] = {
-        Effects = {LaunchSound, LaunchSound2}; -- Table of effects.
-        PlaybackSpeed = (math.random(40, 70)) * 0.01; -- This a property of sound, you can add any properties that your effects have.
-        EffectLifetime = 3; -- Duration of effect(s), time before it gets destroyed.
-        Pause = 0; -- Time in seconds before the next sequence is executed.
+        Effects = {LaunchSound, LaunchSound2};
+        PlaybackSpeed = (math.random(40, 70)) * 0.01; 
+        EffectLifetime = 3; 
+        Pause = 0;
     },
     [2] = {
         Effects = {ParticleTrailEffect, TrailEffect2};
         EffectLifetime = 3;
         Pause = 3;
     },
-
-    ...
-
 }
 ```
 
@@ -147,15 +146,12 @@ Within each sequence you can include custom keys: [View here](#custom-keys-for-s
 
 Example: 
 ```lua
-
-...
-
 ExplosionSequence = {
     [1] = {
         Effects = {Flash1}; 
-        Emit = 50; -- If the effects are particle emmitters, this is the amount to emit.
-        Pause = 0; --Delay/Wait before the next sequence.
-        Color =  ColorSequence.new{ColorSequenceKeypoint.new(0, ColorA), ColorSequenceKeypoint.new(1, ColorA)} -- You can also add any property that matches with what you put in the effects.
+        Emit = 50;
+        Pause = 0;
+        Color =  ColorSequence.new{ColorSequenceKeypoint.new(0, ColorA), ColorSequenceKeypoint.new(1, ColorA)} 
     },
     [2] = {
         Effects = {Particles1};
@@ -172,9 +168,6 @@ ExplosionSequence = {
         Effects = {PointLight};
         EffectLifetime = 0.1;
     },
-
-    ...
-
 }
 ```
 
