@@ -95,8 +95,8 @@ end)
 
 ## Properties:
 
-| Property  | Type | Example (Default Rocket) |
-| :---: | ------------- | ------------- |
+| Property  | Type | Description | Example (Rocket Default) |
+| :---: | :---: | ------------- | ------------- |
 | AttachmentAlwaysFacesUp  | `boolean` | The attachment will face straight up to the sky, if you want to angle your fireworks at a different angle set this to false | `AttachmentAlwaysFacesUp = true;` |
 | AttachmentCenterOfMass | `boolean` | The attachment and force will be applied to the fireworks center of mass. | `AttachmentCenterOfMass = true;` |
 | AutomaticWeld | `boolean` | If the object firework is a model, it will weld all the parts together such that when the firework is unanchored it won't fall apart. | `AutomaticWeld = true;` |
@@ -113,43 +113,46 @@ end)
 
 
 ## LaunchSequence Table
-LaunchSequence table is a table that contains sequences that will be executed when the firework is in flight before exploding. For example, you would want a launch sound and possible a particle trail to be played and enabled.
+LaunchSequence table is a table that contains sequences (indexed tables) whose values will be executed when the firework is in flight before exploding. For example, you would want a launch sound and possible a particle trail to be played and enabled when the firework is launched.
 
-These are the custom keys for the LaunchSequence table:
-    - | `table` | Effects: Table of objects; You want bunch similar objects together.
-    - | `number` | Emit: If you want to :Emit() a certain number of particles
-    - | `number` | Pause: Time in seconds to wait for the next sequence.
+Within each sequence you can include custom keys: [View here](#custom-keys-for-sequence-tables)
+
+Within each sequence you can also add whichever property that your effects have. For example, if you have a sound in the effects table, you can include `PlaybackSpeed` or `Volume` etc.
 
 Example: 
 ```lua
 LaunchSequence = {
     [1] = {
-        Effects = {LaunchSound, LaunchSound2}; -- Table of effects: Particle Emitters, Sounds, Lights, Explosions, Sparkles etc.
+        Effects = {LaunchSound, LaunchSound2}; -- Table of effects.
         PlaybackSpeed = (math.random(40, 70)) * 0.01; -- This a property of sound, you can add any properties that your effects have.
         EffectLifetime = 3; -- Duration of effect(s), time before it gets destroyed.
         Pause = 0; -- Time in seconds before the next sequence is executed.
-    };
-
+    },
     [2] = {
         Effects = {ParticleTrailEffect, TrailEffect2};
         EffectLifetime = 3;
         Pause = 3;
-    };
+    },
+
+    ...
+
 }
 ```
 
 
 ## ExplosionSequence Table
-ExplosionSequence table is a table that contains sequences that will be executed when the firework explodes. For example, you would want all your exploding firework particles to be emited, and explosion sounds
+ExplosionSequence table is a table that contains sequences (indexed tables) whoses values will be executed when the firework explodes. For example, you would want all your exploding firework particles to be emited, and explosion sounds
 
-The table has the same custom keys as the LaunchSequence.
+Within each sequence you can include custom keys: [View here](#custom-keys-for-sequence-tables)
 
 Example: 
 ```lua
+
 ...
+
 ExplosionSequence = {
     [1] = {
-        Effects = {Flash1}; -- Table of effects: Particle Emitters, Sounds, Lights, Explosions, Sparkles etc.
+        Effects = {Flash1}; 
         Emit = 50; -- If the effects are particle emmitters, this is the amount to emit.
         Pause = 0; --Delay/Wait before the next sequence.
         Color =  ColorSequence.new{ColorSequenceKeypoint.new(0, ColorA), ColorSequenceKeypoint.new(1, ColorA)} -- You can also add any property that matches with what you put in the effects.
@@ -169,5 +172,15 @@ ExplosionSequence = {
         Effects = {PointLight};
         EffectLifetime = 0.1;
     },
+
+    ...
+
 }
 ```
+
+## Custom Keys for Sequence Tables
+| key | Type | Description | Example |
+| :---: | :---: | ------------- | ------------- |
+| `Effects` | table | Table of objects; i.e Particle Emitters, Sounds, Lights, Explosions, Sparkles etc. | `Effects = {particle1, particle2, sound1, sound2};` |
+| `Emit` | number | If your effects contains any particle emitters, on execution of sequence, it will emit this amount. | `Emit = 1000;` |
+| `Pause` | number |  Pause: Time in seconds to wait for the next sequence. | `Pause = 2` |
