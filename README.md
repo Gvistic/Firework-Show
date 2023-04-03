@@ -8,9 +8,9 @@
  2. Insert the model through Roblox Studio. 
  3. Open the "RodisFireworks" folder. 
  4. Move and ungroup everything respectively.
-     - "RodisFireworksModule" -> ReplciatedStorage
-     - "RodisFireworkController" -> ServerScriptService
-     - "RodisFireworks" -> Workspace
+     - "RodisFireworksModule" -> `ReplciatedStorage`
+     - "RodisFireworkController" -> `ServerScriptService`
+     - "RodisFireworks" -> `Workspace`
 
 
 ## Example (Non-Object):
