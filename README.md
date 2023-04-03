@@ -5,10 +5,10 @@ You can use this firework module to create your own amazing firework shows!
 
 
  ## Installation
- 1. Grab a copy from: [TBA]
- 2. Insert the model through Roblox Studio. 
- 3. Open the "RodisFireworks" folder. 
- 4. Move and ungroup everything respectively.
+ 1. Grab a copy from: [Here](https://www.roblox.com/library/12975366762/FireworkModule)
+ 2. Insert the model through Roblox Studio
+ 3. Open the "RodisFireworks" folder
+ 4. Move and ungroup everything respectively:
      - "RodisFireworksModule" -> `ReplciatedStorage`
      - "RodisFireworkController" -> `ServerScriptService`
      - "RodisFireworks" -> `Workspace`
