@@ -61,8 +61,7 @@ task.wait(2)
 RodisFireworksModule:Ignite("Rocket","Firework1", {
     YForce = 450; -- Velocity of the rocket in the Y-Axis.
     TimeBeforeExplosion = 3; -- Duration in seconds before it explodes. (Flight duration)
-    UseCustomAttachment = true; -- Use a custom attachment on the firework, but be sure to name it "FireworkAttachment".
-    -- You can view all other properties below: 
+    -- You can view all other in the properties section
 })
 
 ```
@@ -82,6 +81,7 @@ local myRocket = RodisFireworksModule:GetRocketFactory();
 local rocket1 = myRocket.new("Firework1", {
 	YForce = 300; -- How fast the force is on the Y axis.
 	TimeBeforeExplosion = 2.5; -- How long in seconds it should fly before exploding.
+    UseCustomAttachment = true; -- Be sure to name it "FireworkAttachment.
 })
 
 -- Ignite the rocket
