@@ -1,74 +1,109 @@
 --[[
-	Installation
-		Move "RodisFireworksModule" anywhere inside of ReplicatedStorage
-		Move "RodisFireworks" anywhere inside of Workspace
-		Move "RodisFireworkController" anywhere inside of ServerScriptService
+	The following is documentation for the properties table:
+	If you want to see the table in aciton go to RodisFireworksModules > Modules > Fireworks > Rocket > Properties
+	There are also a few others in "FireworkProperties" folder
 
-	Introduction
-		Welcome to the Rodis Firework Show Developer Event!
-		You can use this firework module to create your amazing fireworks shows!
+	Properties
+		The properties table can contain any of the following values:
+			- boolean AttachmentAlwaysFacesUp:
+				The attachment will face straight up to the sky, if you want to angle your fireworks at a different angle set this to false
+				(Default: true)
 
-	Getting Started
-		To use the Rodis Firework module, follow these steps:
+			- boolean AttachmentCenterOfMass:
+				The attachment and force will be applied to the fireworks center of mass.
+				(Default: true)
 
-		Create or import a rocket or firework launcher, and place them in Workspace, in the "RodisFireworks" folder.
-		Give each type of firework model a unique name (Though you can ignite multiple of the same fireworks if they have the same name).
-		Use the firework module to ignite the fireworks!
+			- boolean AutomaticWeld:
+				If the object firework is a model, it will weld all the parts together such that when the firework is unanchored it won't fall apart.
+				(Default: true)
 
-	Firework Module
-		The firework module has three functions:
-			1) :Ignite(fireworkType, name, properties)
-				This function ignites a rocket given the type, name, and optional properties.
-					- fireworkType: The type of firework to ignite. This can be either "Rocket", "Crackle", "Confetti" or "Rainbow"
-					- name: The name of the firework(s) you want to ignite.
-					- properties (Optional): A table containing any additional properties for the rocket or firework.
+			- boolean EstimateForce:
+				This will compute a new YForce depending on the given YForce and mass. Essentially making it such that no matter what YForce you set,
+				the firework will always have enough force to go airborne.
+				(Default: true)
 
-			2) :IgniteClassic(fireworkType, name)
-			   This function fires the classical fireworks originally created by Stickmasterluke
-					- fireworkType: The type of firework to ignite. This can be either "Fan", "Display", "Classic" or "Finale"
-					- name: The name of the firework(s) you want to ignite.
+			- number FireworkLifeTime:
+				Duration of explosion before the firework and effects are destroyed. Setting this lower will remove the particle effects faster,
+				i.e. 10 secconds will let the particles disapate themselves. Basically, after the explosion happens, how long should we wait before
+				Debris service cleans/destroys the firework.
 
-			3) :GetRocketFactory()
-			   If you're a bit more familiar with object-oriented programming, this function returns the Rocket object,
-			   so you have a bit more control features.
+			- number Mass:
+				If estimate force is true, this is the desired mass used in calculations
+				(Default: 2)
 
-	For more documentation and examples on the properties table and rocket object,
-	check within this script "[README] Properties" and "[README] Rocket Object".
+			- number TimeBeforeExplosion:
+				The time in seconds before the firework explodes, basically for how long should it fly.
+				(Default: math.random(20, 45) * 0.1)
 
-	Examples:
-		1) Igniting a rocket:
-			local RodisFireworks = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
+			- boolean UseCustomAttachment:
+				If this is true, you can create your own attachment, be sure to name it "FireworkAttachment".
+				Otherwise the module will create it's own attachment at the center of mass.
+				(Default: false)
 
-			RodisFireworks:Ignite("Rocket", "My Rocket", {
-				YForce = 500, -- Velocity
-				TimeBeforeExplosion = 10, -- Time before it explodes, basically flight time
-			})
+			- number YForce:
+				The force applied to the Rocket in the Y direction.
+				(Default: math.random(2000, 3000))
 
-		2) Igniting a classic firework:
-			local FireworksModule = require(game:GetService("ServerScriptService"):WaitForChild("RodisFireworks"))
+			- number XForce:
+				The force applied to the Rocket in the X direction.
+				(Default: math.random(-20, 20) * 0.1)
 
-			FireworksModule:IgniteClassic("Fan", "Launcher1")
-			task.wait(5)
-			FireworksModule:IgniteClassic("Display", "Launcher1")
-			FireworksModule:IgniteClassic("Classic", "Launcher2")
-			task.wait(10)
-			FireworksModule:IgniteClassic("Finale", "Launcher1")
+			- number ZForce:
+				The force applied to the Rocket in the Z direction.
+				(Default: math.random(-20, 20) * 0.1)
 
+			- table LaunchSequence:
+				A table of sequences in which the module will execute for launch.
+				This is what the table would look like:
+					LaunchSequence = {
+						[1] = {
+							Effects = {LaunchSound, LaunchSound2};
+							PlaybackSpeed = (math.random(40, 70)) * 0.01; -- This a property of sound, you can add any properties that your effects have.
+							EffectLifetime = 3; -- Duration of effect(s), time before it gets destroyed.
+							Pause = 0; -- Time in seconds before the next sequence is executed.
+						};
 
-		3) Using a Rocket Object:
-			local RodisFireworks = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
-			local Rocket = RodisFireworks:GetRocketFactory()
+						[2] = {
+							Effects = {ParticleTrailEffect, TrailEffect2};
+							EffectLifetime = 3;
+							Pause = 3;
+						};
+					}
 
-			local myRocket = Rocket.new("My Rocket", {
-				YForce = 500,
-				TimeBeforeExplosion = 10,
-			})
+				The table can contain as many sequences as you want, each sequence will be executed one after another. These are the custom keys:
+					- table Effects: Table of objects, usually you would bunch different types of objects seperately.
+					- number Emit: If you want to :Emit() a certain number of particles
+					- number Pause: Time in seconds to wait for the next sequence.
 
-			myRocket:Ignite()
-			myRocket.Completed:Connect(function()
-				print("Rocket exploded")
-				myRocket:Respawn()
-			end)
+			- table ExplosionSequence:
+				A table of sequences in which the module will execute for the explosion of the firework.
+				This is what the tabke would look like:
+					ExplosionSequence = {
+						[1] = {
+							Effects = {Flash1}; -- Table of effects: Particle Emitters, Sounds, Lights, Explosions, Sparkles etc.
+							Emit = 50; -- If the effects are particle emmitters, this is the amount to emit.
+							Pause = 0; --Delay/Wait before the next sequence.
+							Color =  ColorSequence.new{ColorSequenceKeypoint.new(0, ColorA), ColorSequenceKeypoint.new(1, ColorA)} -- You can also add any property that matches with what you put in the effects.
+						},
+						[2] = {
+							Effects = {Particles1};
+							Emit = 500;
+							Pause = 0;
+							Color = ColorSequence.new{ColorSequenceKeypoint.new(0, ColorB), ColorSequenceKeypoint.new(1, ColorB)};
+						},
+						[3] = {
+							Effects = {ExplosionSound2};
+							EffectLifetime = 3;
+							PlaybackSpeed = (math.random(40, 100)) * 0.01;
+						},
+						[4] = {
+							Effects = {PointLight};
+							EffectLifetime = 0.1;
+						},
+					}
 
-	Enjoy!
+				The table can contain as many sequences as you want, each sequence will be executed one after another. These are the custom keys:
+					- table Effects: Table of objects, usually you would bunch different types of objects seperately.
+					- number Emit: If you want to :Emit() a certain number of particles
+					- number Pause: Time in seconds to wait for the next sequence.
 ]]
