@@ -32,8 +32,8 @@ The firework module has three functions:
 
 2. `:IgniteClassic(fireworkType, name)`
     - This function fires the classical fireworks originally created by Stickmasterluke
-        - **fireworkType**: The type of firework to ignite. This can be either "Fan", "Display", "Classic" or "Finale"
-        - **name**: The name of the firework(s) you want to ignite.
+        - *string* **fireworkType**: The type of firework to ignite. This can be either "Fan", "Display", "Classic" or "Finale"
+        - *string* **name**: The name of the firework(s) you want to ignite.
 
 3. `:GetRocketFactory()`
     - If you're a bit more familiar with object-oriented programming, this function returns the Rocket object,
