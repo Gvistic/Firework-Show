@@ -252,17 +252,17 @@ ExplosionSequence = {
 ## Rocket Object API
 Assume `Rocket = RodisFireworksModule:GetRocketFactory()`
 
-#### Constructors:
+### Constructors:
 
 - Rocket.new(name, properties)
     - Creates a new rocket object.
-        - string `name`: The name of the firework(s) inside the "RodisFireworks" folder that you wish to associate this rocket object to.
-        - (optional) table `properties`: [Properties table](#properties)  
+        - __string__ `name`: The name of the firework(s) inside the "RodisFireworks" folder that you wish to associate this rocket object to.
+        - __table__ (optional)  `properties`: [Properties table](#properties)  
 
 ### Methods:
 - `:Ignite(properties)`
     - Ignites the rocket.
-        - (optional) table `properties`: [Properties table](#properties) though these properties will only apply one-time.
+        - __table__ (optional) `properties`: [Properties table](#properties), however these properties will only apply one-time.
 
 - `:Respawn()`
     - Respawns the rocket.
@@ -275,11 +275,11 @@ Assume `Rocket = RodisFireworksModule:GetRocketFactory()`
 
 - `:SetProperties(properties)`
     - Sets the rocket objects properties
-        - table `properties`: [Properties table](#properties)
+        - __table__ `properties`: [Properties table](#properties)
 
 - `:SetDefaultProperties(properties)`
     - Sets the rocket objects default properties
-        - table `properties`: [Properties table](#properties)
+        - __table__ `properties`: [Properties table](#properties)
 
 ### Events:
 
