@@ -118,7 +118,7 @@ rocket1.Completed:Connect(function()
 end)
 ```
 
-3. Rocket Object and Custom properties:
+3. Rocket object with default and custom properties:
 ```lua
 local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
 
