@@ -80,8 +80,8 @@ local myRocket = RodisFireworksModule:GetRocketFactory();
 
 -- Creates a new Rocket object with the given name and properties.
 local rocket1 = myRocket.new("Firework1", {
-	YForce = 300; -- How fast the force is on the Y axis.
-	TimeBeforeExplosion = 2.5; -- How long in seconds it should fly before exploding.
+    YForce = 300; -- How fast the force is on the Y axis.
+    TimeBeforeExplosion = 2.5; -- How long in seconds it should fly before exploding.
     UseCustomAttachment = true; -- Be sure to name it "FireworkAttachment.
 })
 
