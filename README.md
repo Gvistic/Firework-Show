@@ -259,31 +259,31 @@ Assume `Rocket = RodisFireworksModule:GetRocketFactory()`
         - string `name`: The name of the firework(s) inside the "RodisFireworks" folder that you wish to associate this rocket object to.
         - (optional) table `properties`: [Properties table](#properties)  
 
-#### Methods:
-- :Ignite(properties)
+### Methods:
+- `:Ignite(properties)`
     - Ignites the rocket.
         - (optional) table `properties`: [Properties table](#properties) though these properties will only apply one-time.
 
-- :Respawn()
+- `:Respawn()`
     - Respawns the rocket.
 
-- :GetProperties()
+- `:GetProperties()`
     - Returns the rocket objects properties.
 
-- :GetDefaultProperties()
+- `:GetDefaultProperties()`
     - Returns the rocket objects default properties.
 
-- :SetProperties(properties)
+- `:SetProperties(properties)`
     - Sets the rocket objects properties
         - table `properties`: [Properties table](#properties)
 
-- :SetDefaultProperties(properties)
+- `:SetDefaultProperties(properties)`
     - Sets the rocket objects default properties
         - table `properties`: [Properties table](#properties)
 
-#### Events:
+### Events:
 
-- Rocket.Completed
+- `Rocket.Completed`
     - Signals once the firework(s) has completed it's flight, and exploded. 
     - It signals right as it explodes, it does not wait for the particles to disapear.
 
