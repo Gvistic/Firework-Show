@@ -62,7 +62,7 @@ task.wait(2)
 RodisFireworksModule:Ignite("Rocket","Firework1", {
     YForce = 450; -- Velocity of the rocket in the Y-Axis.
     TimeBeforeExplosion = 3; -- Duration in seconds before it explodes. (Flight duration)
-    -- You can view all other in the properties section
+    -- You can view all other in the properties section.
 })
 
 ```
@@ -75,23 +75,23 @@ RodisFireworksModule:Ignite("Rocket","Firework1", {
 -- Reference to firework module.
 local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
 
--- Creates a new rocket factory named "MyRocket"
+-- Creates a new rocket factory named "MyRocket".
 local myRocket = RodisFireworksModule:GetRocketFactory();
 
--- Creates a new Rocket object with the given name and properties
+-- Creates a new Rocket object with the given name and properties.
 local rocket1 = myRocket.new("Firework1", {
 	YForce = 300; -- How fast the force is on the Y axis.
 	TimeBeforeExplosion = 2.5; -- How long in seconds it should fly before exploding.
     UseCustomAttachment = true; -- Be sure to name it "FireworkAttachment.
 })
 
--- Ignite the rocket
+-- Ignite the rocket.
 rocket1:Ignite()
 
--- Wait for the rocket to complete its sequence of effects
+-- Wait for the rocket to complete its sequence of effects.
 rocket1.Completed:Wait()
 
--- Respawn the rocket
+-- Respawn the rocket.
 rocket1:Respawn()
 ```
 2. Infinetly ignite and respawn firework:
@@ -99,19 +99,18 @@ rocket1:Respawn()
 -- Reference to firework module.
 local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
 
--- Creates a new rocket factory named "MyRocket"
+-- Creates a new rocket factory named "MyRocket".
 local myRocket = RodisFireworksModule:GetRocketFactory();
 
--- Creates a new Rocket object with set properties
+-- Creates a new Rocket object with set properties.
 local rocket1 = myRocket.new("Firework1", {
 	YForce = 300; -- How fast the force is on the Y axis.
 	TimeBeforeExplosion = 2.5; -- How long in seconds it should fly before exploding.
 })
 
--- Ignite the rocket
 rocket1:Ignite()
 
--- Wait for the rocket to complete then wait 5 seconds and respawn and ignite it.
+-- Wait for the rocket to complete then wait 5 seconds and respawn and ignite it again.
 rocket1.Completed:Connect(function()
     rocket1:Respawn()
     task.wait(5)
