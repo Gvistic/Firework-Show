@@ -102,7 +102,7 @@ local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisF
 -- Creates a new rocket factory named "MyRocket"
 local myRocket = RodisFireworksModule:GetRocketFactory();
 
--- Creates a new Rocket object with the given name and properties
+-- Creates a new Rocket object with set properties
 local rocket1 = myRocket.new("Firework1", {
 	YForce = 300; -- How fast the force is on the Y axis.
 	TimeBeforeExplosion = 2.5; -- How long in seconds it should fly before exploding.
