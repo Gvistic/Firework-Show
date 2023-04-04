@@ -129,10 +129,10 @@ local rocket = myRocket.new("Firework1")
 rocket:SetDefaultProperties("Confetti") -- Set default properties to "Confetti"
 
 rocket:Ignite({ -- For this ignite only, these properties will be applied.
-	YForce = 400,
+    YForce = 400,
     XForce = 10,
     ZForce = math.random(5, 25),
-	TimeBeforeExplosion = 5.5
+    TimeBeforeExplosion = 5.5
 });
 
 rocket.Completed:Wait()
