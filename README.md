@@ -122,8 +122,11 @@ end)
 3. Rocket Object and Custom properties:
 ```lua
 local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
+
+local myRocket = RodisFireworksModule:GetRocketFactory()
 local rocket = myRocket.new("Firework1")
-rocket:SetDefaultProperties("Confetti")
+
+rocket:SetDefaultProperties("Confetti") -- Set default properties to "Confetti"
 
 rocket:Ignite({ -- For this ignite only, these properties will be applied.
 	YForce = 400,
