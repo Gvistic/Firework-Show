@@ -147,7 +147,7 @@ rocket:Ignite() -- This ignite will have YForce of 1000.
 
 ## Properties:
 
-These are the properties that you can set. You can also view the default properties for Rocket: [Here](https://github.com/Gvistic/Rodis-Fireworks/blob/main/src/shared/RodisFireworksModule/Modules/Fireworks/Rocket/Properties.lua)
+These are the properties that you can set. You can also view the default properties for Rocket: [Here](https://github.com/Gvistic/Rodis-Fireworks/blob/main/src/shared/RodisFireworksModule/Modules/Fireworks/FireworkProperties/Rocket/init.lua#L29-L100)
 
 | Property  | Type | Description | Example (Rocket Default) |
 | :---: | :---: | ------------- | ------------- |
