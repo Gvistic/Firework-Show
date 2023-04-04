@@ -165,6 +165,25 @@ These are the properties that you can set. You can also view the default propert
 | LaunchSequence | `table` | A table of sequences in which the module will execute for launch. | [View here](#LaunchSequence-Table) |
 | ExplosionSequence | `table` | A table of sequences in which the module will execute for the explosion of the firework. | [View here](#ExplosionSequence-Table) |
 
+An example of a properties table:
+```lua
+properties = {
+    YForce = math.Random(500, 1000),
+    XForce = 50,
+    ZForce = 50,
+    Mass =  5,
+    AutomaticWeld = false
+}
+
+-- or:
+
+local properties = {}
+properties.YForce = math.Random(500, 1000)
+properties.XForce = 50
+properties.ZForce = 50
+properties.Mass = 5
+properties.AutomaticWeld = false
+```
 
 ## LaunchSequence Table
 LaunchSequence table is a table that contains sequences (indexed tables) whose values will be executed when the firework is in flight before exploding. For example, you would want a launch sound and possible a particle trail to be played and enabled when the firework is launched.
@@ -229,3 +248,49 @@ ExplosionSequence = {
 | `Effects` | table | Table of objects; i.e Particle Emitters, Sounds, Lights, Explosions, Sparkles etc. | `Effects = {particle1, particle2, sound1, sound2};` |
 | `Emit` | number | If your effects contains any particle emitters, on execution of sequence, it will emit this amount. | `Emit = 1000;` |
 | `Pause` | number |  Pause: Time in seconds to wait for the next sequence. | `Pause = 2` |
+
+## Rocket Object API
+Assume `Rocket = RodisFireworksModule:GetRocketFactory()`
+
+#### Constructors:
+
+- Rocket.new(name, properties)
+    - Creates a new rocket object.
+        - string `name`: The name of the firework(s) inside the "RodisFireworks" folder that you wish to associate this rocket object to.
+        - (optional) table `properties`: [Properties table](#properties)  
+
+#### Methods:
+- :Ignite(properties)
+    - Ignites the rocket.
+        - (optional) table `properties`: [Properties table](#properties) though these properties will only apply one-time.
+
+- :Respawn()
+    - Respawns the rocket.
+
+- :GetProperties()
+    - Returns the rocket objects properties.
+
+- :GetDefaultProperties()
+    - Returns the rocket objects default properties.
+
+- :SetProperties(properties)
+    - Sets the rocket objects properties
+        - table `properties`: [Properties table](#properties)
+
+- :SetDefaultProperties(properties)
+    - Sets the rocket objects default properties
+        - table `properties`: [Properties table](#properties)
+
+#### Events:
+
+- Rocket.Completed
+    - Signals once the firework(s) has completed it's flight, and exploded. 
+    - It signals right as it explodes, it does not wait for the particles to disapear.
+
+
+
+
+
+
+
+
