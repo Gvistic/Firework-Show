@@ -116,10 +116,10 @@ function Rocket.new(fireworkName : string, properties : Types.properties | nil |
 	setmetatable(self, Rocket)
 	return {
 		Fireworks = self.sanitizedFireworks,
-		Properties = self.sanitizedProperties,
-		SetProperties = self:SetProperties(),
 		Self = self,
+		GetProperties = self:GetProperties(),
 		GetDefaultProperties = self:GetDefaultProperties(),
+		SetProperties = self:SetProperties(),
 		SetDefaultProperties = self:SetDefaultProperties(),
 		Completed = self.Completed,
 		Ignite = self:Ignite(),
@@ -258,6 +258,12 @@ end
 function Rocket:GetDefaultProperties()
 	return function()
 		return self.defaultProperties
+	end
+end
+
+function Rocket:GetProperties()
+	return function()
+		return self.properties
 	end
 end
 
