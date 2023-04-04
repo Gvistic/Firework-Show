@@ -110,7 +110,7 @@ local rocket1 = myRocket.new("Firework1", {
 
 rocket1:Ignite()
 
--- Wait for the rocket to complete then wait 5 seconds and respawn and ignite it again.
+-- On complete, respawn and after a delay ignite the firework again. (Infinite loop)
 rocket1.Completed:Connect(function()
     rocket1:Respawn()
     task.wait(5)
