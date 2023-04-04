@@ -119,6 +119,30 @@ rocket1.Completed:Connect(function()
 end)
 ```
 
+3. Rocket Object and Custom properties:
+```lua
+local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
+local rocket = myRocket.new("Firework1")
+rocket:SetDefaultProperties("Confetti")
+
+rocket:Ignite({ -- For this ignite only, these properties will be applied.
+	YForce = 400,
+    XForce = 10,
+    ZForce = math.random(5, 25),
+	TimeBeforeExplosion = 5.5
+});
+
+rocket.Completed:Wait()
+rocket:Respawn()
+
+-- The rocket will still have the default properties for Confetti, but with YForce updated to 1000.
+rocket:SetProperties({ 
+    YForce = 1000;
+})
+
+rocket:Ignite() -- This ignite will have YForce of 1000.
+```
+
 ## Properties:
 
 These are the properties that you can set. You can also view the default properties for Rocket: [Here](https://github.com/Gvistic/Rodis-Fireworks/blob/main/src/shared/RodisFireworksModule/Modules/Fireworks/Rocket/Properties.lua)
