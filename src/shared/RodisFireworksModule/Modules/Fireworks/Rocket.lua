@@ -3,6 +3,8 @@ local Debris = game:GetService("Debris")
 local Rocket = {}
 Rocket.__index = Rocket
 
+local FireworkProperties = script.Parent.FireworkProperties
+local DefaultRocketProperties = FireworkProperties.Rocket
 local Utility = script.Parent.Parent.Utility
 
 local Log = require(Utility.Log)
@@ -38,7 +40,7 @@ local function anchorToggle(firework, value)
 		for _, object in pairs(firework:GetChildren()) do
 			if object:IsA("BasePart") then
 				object.Anchored = value
-			end	
+			end
 		end
 	end
 end
@@ -50,7 +52,7 @@ local function transparencyToggle(firework, value)
 		for _, object in pairs(firework:GetChildren()) do
 			if object:IsA("BasePart") then
 				object.Transparency = value
-			end	
+			end
 		end
 	end
 end
@@ -83,7 +85,7 @@ local function createAttachment(firework, fireworkProperties)
 		--attachment.WorldCFrame = CFrame.lookAt(attachmentPosition, positionUp)
 		attachment.Position = attachmentPosition
 		parentAttachment(firework, attachment)
-		attachment.WorldAxis = Vector3.new(1, 0, 0) 
+		attachment.WorldAxis = Vector3.new(1, 0, 0)
 		attachment.WorldSecondaryAxis = Vector3.new(0, 1, 0)
 	else
 		parentAttachment(firework, attachment)
@@ -92,26 +94,31 @@ local function createAttachment(firework, fireworkProperties)
 end
 
 
-function Rocket.new(fireworkName : string, properties : Types.properties | nil)
+function Rocket.new(fireworkName : string, properties : Types.properties | nil | Types.fireworkTypes)
 	local self = {}
 	self.fireworkName = fireworkName
 	self.properties = properties
-	self.defaultProperties = require(script.Properties)()
+	if type(properties) == "string" then
+		properties = require(FireworkProperties:FindFirstChild(properties))()
+	end
+	self.defaultProperties = require(DefaultRocketProperties)()
 	self.fireworks = FireworksUtility.getFireworksByName(fireworkName)
 	if #self.fireworks == 0 then
 		warn(string.format("Could not find any fireworks given name: %s", fireworkName))
 	end
-	self.fireworksCopy = copyFireworkTable(self.fireworks)	
+	self.fireworksCopy = copyFireworkTable(self.fireworks)
 	self.ignited = false
 	self.event = Instance.new("BindableEvent")
 	self.Completed = self.event.Event
-	
+
 	self.sanitizedFireworks = sanitizeFireworks(properties, self.defaultProperties, self.fireworks)
-	
+
 	setmetatable(self, Rocket)
 	return {
 		Fireworks = self.sanitizedFireworks,
 		Properties = self.sanitizedProperties,
+		SetProperties = self:SetProperties(),
+		Self = self,
 		GetDefaultProperties = self:GetDefaultProperties(),
 		SetDefaultProperties = self:SetDefaultProperties(),
 		Completed = self.Completed,
@@ -121,13 +128,13 @@ function Rocket.new(fireworkName : string, properties : Types.properties | nil)
 end
 
 function Rocket:Ignite()
-	return function(properties)
-		if self.ignited then
+	return function(self, properties)
+		if self.Self.ignited then
 			print(string.format("Firework already ignited, be sure to respawn Firework: %s", self.fireworkName))
 			return
 		end
-		self.ignited = true
-		for index, fireworkData in ipairs(self.sanitizedFireworks) do
+		self.Self.ignited = true
+		for index, fireworkData in ipairs(self.Self.sanitizedFireworks) do
 			task.spawn(function()
 				local fireworkProperties = fireworkData.properties
 				if properties then
@@ -135,14 +142,14 @@ function Rocket:Ignite()
 				end
 				local firework = fireworkData.firework
 				firework.Name = string.format("%s (Launched)", firework.Name)
-				
-				
-				if (fireworkProperties.EstimateForce)  then -- and (fireworkProperties.YForce == self.defaultProperties.YForce) 
+
+
+				if (fireworkProperties.EstimateForce)  then -- and (fireworkProperties.YForce == self.defaultProperties.YForce)
 					local fireworkMass = PhysicsUtility.calculateObjectMass(firework)
-					local newYForce = PhysicsUtility.calculateYForce(fireworkMass, fireworkProperties) 
+					local newYForce = PhysicsUtility.calculateYForce(fireworkMass, fireworkProperties)
 					fireworkProperties.YForce = newYForce
 				end
-				
+
 				if fireworkProperties.AutomaticlWeld then
 					if not firework:IsA("BasePart") then
 						FireworksUtility.weldFireworkParts(firework)
@@ -160,7 +167,7 @@ function Rocket:Ignite()
 				else
 					attachment = createAttachment(firework, fireworkProperties)
 				end
-				
+
 				-- Unanchors the launcher then adds a force.
 				if not fireworkProperties.Debug then
 					anchorToggle(firework, false)
@@ -172,15 +179,14 @@ function Rocket:Ignite()
 				end
 				force.Force = Vector3.new(fireworkProperties.XForce, fireworkProperties.YForce, fireworkProperties.ZForce)
 
-				
+
 				if fireworkProperties.Debug then
 					force.Enabled = false
 					force.Parent = firework
-					
-					FireworksUtility.SequenceExecuter(firework, fireworkProperties.LaunchSequence)
-					
-					FireworksUtility.SequenceExecuter(firework, fireworkProperties.ExplosionSequence)
 
+					FireworksUtility.SequenceExecuter(firework, fireworkProperties.LaunchSequence)
+
+					FireworksUtility.SequenceExecuter(firework, fireworkProperties.ExplosionSequence)
 				else
 					force.Enabled = true
 					force.Parent = firework
@@ -189,18 +195,18 @@ function Rocket:Ignite()
 
 					-- Wait time before "explosion"
 					task.wait(fireworkProperties.TimeBeforeExplosion)
-					
+
 					anchorToggle(firework, true)
-					transparencyToggle(firework, 1) 
-					
+					transparencyToggle(firework, 1)
+
 					FireworksUtility.SequenceExecuter(firework, fireworkProperties.ExplosionSequence)
 
-				
+
 
 					Debris:AddItem(firework, fireworkProperties.FireworkLifeTime)
 
-					if index == #self.sanitizedFireworks then
-						self.event:Fire()
+					if index == #self.Self.sanitizedFireworks then
+						self.Self.event:Fire()
 					end
 				end
 			end)
@@ -225,11 +231,27 @@ end
 
 function Rocket:SetDefaultProperties()
 	local function updateDefaultProperties(properties)
+		if type(properties) == "string" then
+			properties = require(FireworkProperties:FindFirstChild(properties))()
+		end
 		self.defaultProperties = properties
 		self.sanitizedFireworks = sanitizeFireworks(self.properties, self.defaultProperties, self.fireworks)
 	end
-	return function(self, properties)
+	return function(self, properties: Types.properties | Types.fireworkTypes)
 		updateDefaultProperties(properties)
+	end
+end
+
+function Rocket:SetProperties()
+	local function updateProperties(properties)
+		if type(properties) == "string" then
+			properties = require(FireworkProperties:FindFirstChild(properties))()
+		end
+		self.properties = properties
+		self.sanitizedFireworks = sanitizeFireworks(self.properties, self.defaultProperties, self.fireworks)
+	end
+	return function(self, properties: Types.properties | Types.fireworkTypes)
+		updateProperties(properties)
 	end
 end
 

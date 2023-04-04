@@ -1,9 +1,9 @@
-local assets = script.Assets
+local assets = require(script.Assets)
 
 local particles = assets.Particles
 local Flash1 = particles.Flash1
 local Flash2 = particles.Flash2
-local Particles = particles.Particles
+local StarSparkles = particles.StarSparkles
 local Smoke = particles.Smoke
 
 local lights = assets.Lights
@@ -70,7 +70,7 @@ local function defaultProperties()
 				Pause = 1;
 			},
 			[6] = {
-				Effects = {Particles};
+				Effects = {StarSparkles};
 				Color = ColorSequence.new{ColorSequenceKeypoint.new(0, ColorB), ColorSequenceKeypoint.new(1, ColorB)};
 				Speed = NumberRange.new(0, math.random(10000, 25000));
 				Emit = 2000;

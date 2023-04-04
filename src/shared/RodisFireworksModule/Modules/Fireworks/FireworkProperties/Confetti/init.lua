@@ -1,10 +1,9 @@
-local assets = script.Assets
+local assets = require(script.Assets)
 
 local particles = assets.Particles
 local Flash1 = particles.Flash1
 local Flash2 = particles.Flash2
 local Smoke = particles.Smoke
-local Rainbow = particles.Rainbow
 
 local lights = assets.Lights
 local PointLight = lights.PointLight
@@ -14,6 +13,12 @@ local LaunchSound = sounds.Launch
 local ExplosionSound1 = sounds.Explosion
 local ExplosionSound2 = sounds.Explosion2
 
+local Confetti = assets.Confetti
+local BlueParticle = Confetti.Blue
+local GreenParticle = Confetti.Green
+local RedParticle = Confetti.Red
+local WhiteParticle = Confetti.White
+local YellowParticle = Confetti.Yellow
 
 local function defaultProperties()
 	local function getRandomColor()
@@ -32,7 +37,7 @@ local function defaultProperties()
 		YForce = math.random(900, 2000), -- Velocity 
 		XForce = math.random(-20, 20) * 0.1, 
 		ZForce = math.random(-20, 20) * 0.1, 
-		TimeBeforeExplosion = math.random(15, 23) * 0.1,
+		TimeBeforeExplosion = math.random(20, 30) * 0.1,
 		FireworkLifeTime = 10, -- Duration of explosion before the firework and effects are destroyed. Setting this lower will remove the particle effects faster, i.e. 10 secconds will let the particles disapate themselves. 
 		LaunchSequence = {
 			[1] = {
@@ -69,8 +74,8 @@ local function defaultProperties()
 				PlaybackSpeed = (math.random(40, 100)) * 0.01;
 			},
 			[6] = {
-				Effects = {Rainbow};
-				Emit = 2500;
+				Effects = {BlueParticle, GreenParticle, RedParticle, WhiteParticle, YellowParticle};
+				Emit = 1000;
 			},
 			[7] = {
 				Effects = {PointLight};

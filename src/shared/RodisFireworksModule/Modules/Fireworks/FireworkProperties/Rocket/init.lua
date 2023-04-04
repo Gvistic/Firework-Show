@@ -1,14 +1,14 @@
 --// These are the default properties for Rocket.
 
-local assets = script.Assets
+local assets = require(script.Assets)
 
 local particles = assets.Particles
 
 local Flash1 = particles.Flash
 local Flash2 = particles.Flash2
-local Particles1 = particles.Particles
-local Particles2 = particles.Particles2
-local Particles3 = particles.Particles3
+local Stars = particles.Stars
+local Stars2 = particles.Stars2
+local ExplodingLines = particles.ExplodingLines
 local Smoke = particles.Smoke
 
 local lights = assets.Lights
@@ -60,19 +60,19 @@ local function defaultProperties()
 				Color = ColorSequence.new{ColorSequenceKeypoint.new(0, ColorC), ColorSequenceKeypoint.new(1, ColorC)};
 			},
 			[3] = {
-				Effects = {Particles1};
+				Effects = {Stars};
 				Emit = 500;
 				Pause = 0;
 				Color = ColorSequence.new{ColorSequenceKeypoint.new(0, ColorB), ColorSequenceKeypoint.new(1, ColorB)};
 			},
 			[4] = {
-				Effects = {Particles2};
+				Effects = {Stars2};
 				Emit = 500;
 				Pause = 0;
 				Color = ColorSequence.new{ColorSequenceKeypoint.new(0, ColorC), ColorSequenceKeypoint.new(1, ColorC)};
 			},
 			[5] = {
-				Effects = {Particles3};
+				Effects = {ExplodingLines};
 				Emit = 333;
 				Pause = 0;
 				Color = ColorSequence.new{

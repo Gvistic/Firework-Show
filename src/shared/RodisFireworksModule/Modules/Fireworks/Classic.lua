@@ -2,18 +2,43 @@ local Debris = game:GetService("Debris")
 
 local Utility = script.Parent.Parent.Utility
 local FireworksFolder = require(Utility.FireworksFolder)
+local FireworkAssetsUtility = require(Utility.FireworkAssets)
+
 local Settings = require(script.Parent.Parent.Parent.Settings)
 
 local Classic = {}
 
---// Global Variables:
-local soundsFolder =  script.Sounds
+
 local colors = Settings.Colors
 
 
-local bang = soundsFolder:WaitForChild("BangSound")
-local pop = soundsFolder:WaitForChild("PopSound")
-local fountain = soundsFolder:WaitForChild("FountainSound")
+local bang = FireworkAssetsUtility.CreateSound({
+	Name = "BangSound",
+	SoundId = "http://www.roblox.com/asset/?id=160248505",
+	RollOffMaxDistance = 10000,
+	RollOffMinDistance = 10,
+	RollOffMode = Enum.RollOffMode.Inverse,
+	PlaybackSpeed = 1,
+	Volume = 1,
+})
+local pop = FireworkAssetsUtility.CreateSound({
+	Name = "PopSound",
+	SoundId = "http://www.roblox.com/asset/?id=160248302",
+	RollOffMaxDistance = 10000,
+	RollOffMinDistance = 10,
+	RollOffMode = Enum.RollOffMode.Inverse,
+	PlaybackSpeed = 1,
+	Volume = 1,
+})
+local fountain = FireworkAssetsUtility.CreateSound({
+	Name = "FountainSound",
+	SoundId = "http://www.roblox.com/asset/?id=160248302",
+	RollOffMaxDistance = 10000,
+	RollOffMinDistance = 10,
+	RollOffMode = Enum.RollOffMode.Inverse,
+	PlaybackSpeed = 1,
+	Volume = 1,
+})
 local bangsounds = {160248459, 160248479, 160248493}
 
 function makeRandomBang()

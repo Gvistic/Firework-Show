@@ -75,7 +75,7 @@ function FireWorkModule:Ignite(fireworkType: Types.fireworkTypes, name: string, 
 	if string.lower(fireworkType) == "rainbow" then
 		task.delay(0, function()
 			local Rocket = Rocket.new(name, properties)
-			local rainbowProperties = require(Fireworks.FireworkProperties.RainbowExplosion)()
+			local rainbowProperties = require(Fireworks.FireworkProperties.Rainbow)()
 			Rocket:SetDefaultProperties(rainbowProperties)
 			Rocket:Ignite()
 		end)
