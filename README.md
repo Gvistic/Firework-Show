@@ -41,7 +41,7 @@ so you have a bit more control features.
 
 ## Example (Non-Object):
 
-1. Ignite firework with default properties
+1. Ignite firework with default properties:
 ```lua
 -- Reference to firework module.
 local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
@@ -52,7 +52,7 @@ task.wait(2)
 RodisFireworksModule:Ignite("Rocket","Firework1")
 ```
 
-2. Ignite firework with custom properties
+2. Ignite firework with custom properties:
 ```lua
 local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
 
@@ -70,7 +70,7 @@ RodisFireworksModule:Ignite("Rocket","Firework1", {
 
 ## Examples (Object):
 
-1. Ignite firework and respawn it.
+1. Ignite firework and respawn it:
 ```lua
 -- Reference to firework module.
 local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
@@ -94,7 +94,7 @@ rocket1.Completed:Wait()
 -- Respawn the rocket
 rocket1:Respawn()
 ```
-2. Infinetly ignite and respawn firework.
+2. Infinetly ignite and respawn firework:
 ```lua
 -- Reference to firework module.
 local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
