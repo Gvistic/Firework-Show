@@ -256,13 +256,13 @@ Assume `Rocket = RodisFireworksModule:GetRocketFactory()`
 
 - Rocket.new(name, properties)
     - Creates a new rocket object.
-        - __string__ `name`: The name of the firework(s) inside the "RodisFireworks" folder that you wish to associate this rocket object to.
-        - __table__ (optional)  `properties`: [Properties table](#properties)  
+        - _ _string_ _ `name`: The name of the firework(s) inside the "RodisFireworks" folder that you wish to associate this rocket object to.
+        - _ _table_ _ (optional)  `properties`: [Properties table](#properties)  
 
 ### Methods:
 - `:Ignite(properties)`
     - Ignites the rocket.
-        - __table__ (optional) `properties`: [Properties table](#properties), however these properties will only apply one-time.
+        - _ _table_ _ (optional) `properties`: [Properties table](#properties), however these properties will only apply one-time.
 
 - `:Respawn()`
     - Respawns the rocket.
@@ -275,11 +275,11 @@ Assume `Rocket = RodisFireworksModule:GetRocketFactory()`
 
 - `:SetProperties(properties)`
     - Sets the rocket objects properties
-        - __table__ `properties`: [Properties table](#properties)
+        - _ _table_ _ `properties`: [Properties table](#properties)
 
 - `:SetDefaultProperties(properties)`
     - Sets the rocket objects default properties
-        - __table__ `properties`: [Properties table](#properties)
+        - _ _table_ _ `properties`: [Properties table](#properties)
 
 ### Events:
 
