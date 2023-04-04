@@ -263,7 +263,7 @@ end
 
 function Rocket:GetProperties()
 	return function()
-		return self.sanitizedFireworks
+		return self.properties
 	end
 end
 
