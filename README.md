@@ -6,17 +6,17 @@ You can use this firework module to create your own amazing firework shows!
  ## Installation
  1. Grab a copy from: [Here](https://www.roblox.com/library/12975366762/FireworkModule)
  2. Insert the model through the Roblox Studio toolbox
- 3. From the model open "RodisFireworks" folder 
+ 3. From the model open "Fireworks" folder 
  4. Move and ungroup everything respectively:
-     - "RodisFireworksModule" -> `ReplciatedStorage`
-     - "RodisFireworkController" -> `ServerScriptService`
-     - "RodisFireworks" -> `Workspace`
+     - "FireworksModule" -> `ReplciatedStorage`
+     - "FireworkController" -> `ServerScriptService`
+     - "Fireworks" -> `Workspace`
 
 ## Getting Started
 
-To use the Rodis Firework module, follow these steps:
+To use the Firework module, follow these steps:
 
-1. Create or import a rocket or firework launcher, and place them in Workspace, in the "RodisFireworks" folder.
+1. Create or import a rocket or firework launcher, and place them in Workspace, in the "Fireworks" folder.
 2. Give each type of firework model a unique name (Though you can ignite multiple of the same fireworks if they have the same name).
 3. Use the firework module to ignite the fireworks!
 
@@ -146,7 +146,7 @@ rocket:Ignite() -- This ignite will have YForce of 1000.
 
 ## Properties:
 
-These are the properties that you can set. You can also view the default properties for Rocket: [Here](https://github.com/Gvistic/Rodis-Fireworks/blob/main/src/shared/RodisFireworksModule/Modules/Fireworks/FireworkProperties/Rocket/init.lua#L29-L100)
+These are the properties that you can set. You can also view the default properties for Rocket: [Here](https://github.com/Gvistic/Fireworks/blob/main/src/shared/RodisFireworksModule/Modules/Fireworks/FireworkProperties/Rocket/init.lua#L29-L100)
 
 | Property  | Type | Description | Example (Rocket Default) |
 | :---: | :---: | ------------- | ------------- |

@@ -1,17 +1,17 @@
 --[[
 	Installation
-		Move "RodisFireworksModule" anywhere inside of ReplicatedStorage
-		Move "RodisFireworks" anywhere inside of Workspace
-		Move "RodisFireworkController" anywhere inside of ServerScriptService
+		Move "FireworksModule" anywhere inside of ReplicatedStorage
+		Move "Fireworks" anywhere inside of Workspace
+		Move "FireworkController" anywhere inside of ServerScriptService
 
 	Introduction
-		Welcome to the Rodis Firework Show Developer Event!
+		Welcome to the Firework Show Developer Event!
 		You can use this firework module to create your amazing fireworks shows!
 
 	Getting Started
-		To use the Rodis Firework module, follow these steps:
+		To use the Firework module, follow these steps:
 
-		Create or import a rocket or firework launcher, and place them in Workspace, in the "RodisFireworks" folder.
+		Create or import a rocket or firework launcher, and place them in Workspace, in the "Fireworks" folder.
 		Give each type of firework model a unique name (Though you can ignite multiple of the same fireworks if they have the same name).
 		Use the firework module to ignite the fireworks!
 
@@ -37,27 +37,27 @@
 
 	Examples:
 		1) Igniting a rocket:
-			local RodisFireworks = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
+			local Fireworks = require(game:GetService("ReplicatedStorage").FireworksModule)
 
-			RodisFireworks:Ignite("Rocket", "My Rocket", {
+			Fireworks:Ignite("Rocket", "My Rocket", {
 				YForce = 500, -- Velocity
 				TimeBeforeExplosion = 10, -- Time before it explodes, basically flight time
 			})
 
 		2) Igniting a classic firework:
-			local FireworksModule = require(game:GetService("ServerScriptService"):WaitForChild("RodisFireworks"))
+			local Fireworks = require(game:GetService("ServerScriptService"):WaitForChild("Fireworks"))
 
-			FireworksModule:IgniteClassic("Fan", "Launcher1")
+			Fireworks:IgniteClassic("Fan", "Launcher1")
 			task.wait(5)
-			FireworksModule:IgniteClassic("Display", "Launcher1")
-			FireworksModule:IgniteClassic("Classic", "Launcher2")
+			Fireworks:IgniteClassic("Display", "Launcher1")
+			Fireworks:IgniteClassic("Classic", "Launcher2")
 			task.wait(10)
-			FireworksModule:IgniteClassic("Finale", "Launcher1")
+			Fireworks:IgniteClassic("Finale", "Launcher1")
 
 
 		3) Using a Rocket Object:
-			local RodisFireworks = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
-			local Rocket = RodisFireworks:GetRocketFactory()
+			local Fireworks = require(game:GetService("ReplicatedStorage").FireworksModule)
+			local Rocket = Fireworks:GetRocketFactory()
 
 			local myRocket = Rocket.new("My Rocket", {
 				YForce = 500,

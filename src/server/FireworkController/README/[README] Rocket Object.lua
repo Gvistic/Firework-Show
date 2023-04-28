@@ -2,7 +2,7 @@
 	Rocket Properties
 		Rocket object functions/events:
 			function Rocket.new(name, properties)
-				- name: The name of the firework(s) inside the "RodisFireworks" that you wish to associate this rocket object to.
+				- name: The name of the firework(s) inside the "Fireworks" that you wish to associate this rocket object to.
 				- properties: A table containing any additional properties for the rocket or firework. (Explained in later sections)
 
 			function Rocket:Ignite()

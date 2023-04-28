@@ -1,6 +1,6 @@
 --[[
 	The following is documentation for the properties table:
-	If you want to see the table in aciton go to RodisFireworksModules > Modules > Fireworks > Rocket > Properties
+	If you want to see the table in aciton go to FireworksModules > Modules > Fireworks > Rocket > Properties
 	There are also a few others in "FireworkProperties" folder
 
 	Properties
