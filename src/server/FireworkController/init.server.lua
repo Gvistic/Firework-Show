@@ -1,9 +1,9 @@
 --[[
-	Rodis Firework Controller, uncomment out the following below to get started to your own firework show!
+	Firework Controller, uncomment out the following below to get started to your own firework show!
 ]]
 
--- local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
+-- local FireworksModule = require(game:GetService("ReplicatedStorage").FireworksModule)
 
 -- task.wait(2)
 
--- RodisFireworksModule:Ignite("Rocket","Firework1")
+-- FireworksModule:Ignite("Rocket","Firework1")
