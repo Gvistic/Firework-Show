@@ -1,6 +1,6 @@
-# 🎆 Fireworks Module
+# 🎆 Firework Service
  
-You can use this firework module to create your own amazing firework shows! 
+You can use this service/module to create your own amazing firework shows! 
 
 
  ## Installation
