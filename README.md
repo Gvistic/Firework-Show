@@ -43,22 +43,22 @@ so you have a bit more control features.
 1. Ignite firework with default properties:
 ```lua
 -- Reference to firework module.
-local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
+local FireworksModule = require(game:GetService("ReplicatedStorage").FireworksModule)
 
 task.wait(2)
 
 -- Ignite the firework named "Firework1" with type of "Rocket".
-RodisFireworksModule:Ignite("Rocket","Firework1")
+FireworksModule:Ignite("Rocket","Firework1")
 ```
 
 2. Ignite firework with custom properties:
 ```lua
-local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
+local FireworksModule = require(game:GetService("ReplicatedStorage").FireworksModule)
 
 task.wait(2)
 
 -- Ignite the firework named "Firework1" with type of "Rocket" and custom properties.
-RodisFireworksModule:Ignite("Rocket","Firework1", {
+FireworksModule:Ignite("Rocket","Firework1", {
     YForce = 450; -- Velocity of the rocket in the Y-Axis.
     TimeBeforeExplosion = 3; -- Duration in seconds before it explodes. (Flight duration)
     -- You can view all other in the properties section.
@@ -72,10 +72,10 @@ RodisFireworksModule:Ignite("Rocket","Firework1", {
 1. Ignite firework and respawn it:
 ```lua
 -- Reference to firework module.
-local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
+local FireworksModule = require(game:GetService("ReplicatedStorage").FireworksModule)
 
 -- Creates a new rocket factory named "MyRocket".
-local myRocket = RodisFireworksModule:GetRocketFactory();
+local myRocket = FireworksModule:GetRocketFactory();
 
 -- Creates a new Rocket object with the given name and properties.
 local rocket1 = myRocket.new("Firework1", {
@@ -96,10 +96,10 @@ rocket1:Respawn()
 2. Infinetly ignite and respawn firework:
 ```lua
 -- Reference to firework module.
-local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
+local FireworksModule = require(game:GetService("ReplicatedStorage").FireworksModule)
 
 -- Creates a new rocket factory named "MyRocket".
-local myRocket = RodisFireworksModule:GetRocketFactory();
+local myRocket = FireworksModule:GetRocketFactory();
 
 -- Creates a new Rocket object with set properties.
 local rocket1 = myRocket.new("Firework1", {
@@ -119,9 +119,9 @@ end)
 
 3. Rocket object with default and custom properties:
 ```lua
-local RodisFireworksModule = require(game:GetService("ReplicatedStorage").RodisFireworksModule)
+local FireworksModule = require(game:GetService("ReplicatedStorage").FireworksModule)
 
-local myRocket = RodisFireworksModule:GetRocketFactory()
+local myRocket = FireworksModule:GetRocketFactory()
 local rocket = myRocket.new("Firework1")
 
 rocket:SetDefaultProperties("Confetti") -- Set default properties to "Confetti"
@@ -249,13 +249,13 @@ ExplosionSequence = {
 | `Pause` | number |  Pause: Time in seconds to wait for the next sequence. | `Pause = 2` |
 
 ## Rocket Object API
-Assume `Rocket = RodisFireworksModule:GetRocketFactory()`
+Assume `Rocket = FireworksModule:GetRocketFactory()`
 
 ### Constructors:
 
 - Rocket.new(name, properties)
     - Creates a new rocket object.
-        - *string* `name`: The name of the firework(s) inside the "RodisFireworks" folder that you wish to associate this rocket object to.
+        - *string* `name`: The name of the firework(s) inside the "Fireworks" folder that you wish to associate this rocket object to.
         - *table* `properties` (Optional): [Properties table](#properties)  
 
 ### Methods:
