@@ -22,7 +22,7 @@ local Classic = require(Fireworks.Classic)
 
 
 --// Global Varibles:
-local print, warn = Log.new("[RODIS_FIREWORK_MODULE]: ")
+local print, warn = Log.new("[FIREWORK_MODULE]: ")
 
 local fireworkObjects = {}
 

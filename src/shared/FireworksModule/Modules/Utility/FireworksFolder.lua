@@ -4,7 +4,7 @@ local FireworkFolderName = Settings.FireworkFolderName
 local FireworksFolder = game.Workspace:FindFirstChild(FireworkFolderName, true)
 
 if FireworksFolder == nil then
-	error(string.format('[RODIS_FIREWORK_MODULE]: Please ensure there is a folder called "%s" somewhere in workspace.', FireworkFolderName))
+	error(string.format('[FIREWORK_MODULE]: Please ensure there is a folder called "%s" somewhere in workspace.', FireworkFolderName))
 end
 
 return FireworksFolder

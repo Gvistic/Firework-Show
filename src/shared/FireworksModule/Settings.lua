@@ -1,7 +1,7 @@
 Settings = {}
 
 -- The name of the folder where you include all the fireworks.
-Settings.FireworkFolderName = "RodisFireworks"
+Settings.FireworkFolderName = "Fireworks"
 
 -- The classic fireworks shot out random colors, specify those random colors here:
 Settings.Colors = {

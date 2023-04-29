@@ -14,7 +14,7 @@ local FireworksUtility = require(Utility.Fireworks)
 local SanitizeProperties = require(Utility.Sanitize)
 local FireworksFolder = require(Utility.FireworksFolder)
 
-local print, warn = Log.new("[RODIS_FIREWORK_MODULE]: ")
+local print, warn = Log.new("[FIREWORK_MODULE]: ")
 
 local function copyFireworkTable(input)
 	local outputTable = {}
