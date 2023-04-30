@@ -5,6 +5,7 @@ You can use this service/module to create your own amazing firework shows!
 
  ## Installation
  1. Grab a copy from: [Here](https://www.roblox.com/library/12975366762/FireworkModule)
+ 	- or from [Releases](https://github.com/Gvistic/Firework-Show/releases)
  2. Insert the model through the Roblox Studio toolbox
  3. From the model open "Fireworks" folder 
  4. Move and ungroup everything respectively:
