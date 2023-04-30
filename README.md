@@ -1,4 +1,4 @@
-# 🎆 Firework Service
+# 🎆 Firework Show Service
  
 You can use this service/module to create your own amazing firework shows! 
 
