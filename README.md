@@ -82,7 +82,7 @@ local myRocket = FireworksModule:GetRocketFactory();
 local rocket1 = myRocket.new("Firework1", {
     YForce = 300; -- How fast the force is on the Y axis.
     TimeBeforeExplosion = 2.5; -- How long in seconds it should fly before exploding.
-    UseCustomAttachment = true; -- Be sure to name it "FireworkAttachment.
+    UseCustomAttachment = true; -- Be sure to name the attachment "FireworkAttachment".
 })
 
 -- Ignite the rocket.
